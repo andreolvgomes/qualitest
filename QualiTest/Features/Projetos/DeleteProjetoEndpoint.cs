@@ -4,7 +4,7 @@ using FastEndpoints;
 namespace QualiTest.Features.Projetos
 {
     [HttpDelete("projetos/{id:Guid}")]
-    public class DeleteProjetoEndpoint : Endpoint<ProjetosEntity>
+    public class DeleteProjetoEndpoint : EndpointWithoutRequest
     {
         private readonly IProjetosRepository _projetosRepository;
 
@@ -13,7 +13,7 @@ namespace QualiTest.Features.Projetos
             _projetosRepository = projetosRepository;
         }
 
-        public async override Task HandleAsync(ProjetosEntity req, CancellationToken ct)
+        public async override Task HandleAsync(CancellationToken ct)
         {
             await _projetosRepository.Delete(Route<Guid>("id"));
             await Send.OkAsync();

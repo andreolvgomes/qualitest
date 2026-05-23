@@ -17,4 +17,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\src\Infra.IoC\Infra.IoC.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Features\CasosTeste\" />
+	</ItemGroup>
 </Project>

@@ -12,6 +12,7 @@ namespace Infra.IoC
             DotNetEnv.Env.TraversePath().Load();
 
             services.AddScoped<IProjetosRepository, ProjetosRepository>();
+            services.AddScoped<ICasosNosRepository, CasosNosRepository>();
 
             var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
             services.AddScoped<IDbConnection>(s => new NpgsqlConnection(connectionString));
