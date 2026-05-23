@@ -3,7 +3,7 @@ using Infra.Repositories;
 
 namespace QualiTest.Features.Planos
 {
-    [HttpGet("planos/{planos_id:Guid}/planoscasos")]
+    [HttpGet("planos/{plano_id:Guid}/planoscasos")]
     public class GetAllPlanosCasosEndpoint : EndpointWithoutRequest
     {
         private readonly IRepositoryBase<PlanoCasosEntity> _repository;
@@ -15,8 +15,8 @@ namespace QualiTest.Features.Planos
 
         public async override Task HandleAsync(CancellationToken ct)
         {
-            var planos_id = Route<Guid>("planos_id");
-            await Send.OkAsync(await _repository.GetAll(new { planos_id }));
+            var plano_id = Route<Guid>("plano_id");
+            await Send.OkAsync(await _repository.GetAll(new { plano_id }));
         }
     }
 }

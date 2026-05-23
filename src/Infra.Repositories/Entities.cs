@@ -32,7 +32,7 @@ namespace Infra.Repositories
     [Table("passos")]
     public class PassosEntity : EntityBase
     {
-        public Guid Casos_id { get; set; }
+        public Guid Caso_id { get; set; }
         public Int16 Ordem { get; set; }
         public string Acao { get; set; }
         public string Resultado_esperado { get; set; }
@@ -49,7 +49,7 @@ namespace Infra.Repositories
     [Table("planocasos")]
     public class PlanoCasosEntity : EntityBase
     {
-        public Guid Planos_id { get; set; }
-        public Guid Casos_id { get; set; }
+        public Guid Plano_id { get; set; }
+        public Guid Caso_id { get; set; }
     }
 }

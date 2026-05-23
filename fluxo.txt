@@ -1,14 +1,14 @@
 PROJETOS
    ↓
-CASOS_NOS (árvore)
+NOS (árvore)
    ↓
-CASOS_TESTE (testes)
+CASOS (casos de testes)
    ↓
-PLANOS_TESTE (seleção)
+PLANOS (planos de testes)
    ↓
-EXECUÇÃO
+EXECUÇÃO (execução de plano de testes)
    ↓
-RESULTADOS
+RESULTADOS (resultado)
 
 --------------------------------------------------
 1 - Cria Projeto

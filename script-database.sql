@@ -30,7 +30,7 @@ CREATE TABLE nos (
 
 CREATE TABLE casos (
     id UUID PRIMARY KEY,
-    nos_id UUID NOT NULL REFERENCES nos(id) ON DELETE CASCADE,
+    no_id UUID NOT NULL REFERENCES nos(id) ON DELETE CASCADE,
     pre_condicoes TEXT DEFAULT '',
     resultado_esperado TEXT DEFAULT '',
     created_at TIMESTAMP DEFAULT NOW()
@@ -38,7 +38,7 @@ CREATE TABLE casos (
 
 CREATE TABLE passos (
     id UUID PRIMARY KEY,
-    casos_id UUID NOT NULL REFERENCES casos(id) ON DELETE CASCADE,
+    caso_id UUID NOT NULL REFERENCES casos(id) ON DELETE CASCADE,
 	
     ordem INT NOT NULL,
     acao TEXT NOT NULL DEFAULT '',
