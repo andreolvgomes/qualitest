@@ -4,11 +4,11 @@ using FastEndpoints;
 namespace QualiTest.Features.Projetos
 {
     [HttpPost("projetos")]
-    public class CriarProjetoEndpoint : Endpoint<ProjetosEntity>
+    public class CriarProjetosEndpoint : Endpoint<ProjetosEntity>
     {
-        private readonly IProjetosRepository _projetosRepository;
+        private readonly IRepositoryBase<ProjetosEntity> _projetosRepository;
 
-        public CriarProjetoEndpoint(IProjetosRepository projetosRepository)
+        public CriarProjetosEndpoint(IRepositoryBase<ProjetosEntity> projetosRepository)
         {
             _projetosRepository = projetosRepository;
         }

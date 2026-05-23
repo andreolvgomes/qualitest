@@ -4,11 +4,11 @@ using FastEndpoints;
 namespace QualiTest.Features.Projetos
 {
     [HttpDelete("projetos/{id:Guid}")]
-    public class DeleteProjetoEndpoint : EndpointWithoutRequest
+    public class DeleteProjetosEndpoint : EndpointWithoutRequest
     {
-        private readonly IProjetosRepository _projetosRepository;
+        private readonly IRepositoryBase<ProjetosEntity> _projetosRepository;
 
-        public DeleteProjetoEndpoint(IProjetosRepository projetosRepository)
+        public DeleteProjetosEndpoint(IRepositoryBase<ProjetosEntity> projetosRepository)
         {
             _projetosRepository = projetosRepository;
         }

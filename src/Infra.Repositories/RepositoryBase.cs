@@ -17,8 +17,8 @@ namespace Infra.Repositories
         Task Update(TEntity entity);
         Task Delete(TEntity entity);
         Task Delete(Guid id);
-        Task<IEnumerable<TEntity>> GetAll();
-        Task<TEntity> GetById(Guid id);
+        Task<IEnumerable<TEntity>> GetAll(object param = null);
+        Task<TEntity> Get(Guid id);
     }
 
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
@@ -48,12 +48,12 @@ namespace Infra.Repositories
             await _connection.ExecuteAsync($"delete from {tableName} where id = @id", new { id });
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAll(object param = null)
         {
-            return await _connection.GetAllAsync<TEntity>();
+            return await _connection.GetAllAsync<TEntity>(param: param);
         }
 
-        public async Task<TEntity> GetById(Guid id)
+        public async Task<TEntity> Get(Guid id)
         {
             return await _connection.FindAsync<TEntity>(new { id = id });
         }

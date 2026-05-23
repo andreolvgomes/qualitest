@@ -24,7 +24,7 @@ app.UseFastEndpoints(c =>
 app.UseSwaggerGen();
 
 //https://localhost:55564/scalar
-app.MapScalarApiReference();
+//app.MapScalarApiReference();
 
 app.MapGet("/", context =>
 {

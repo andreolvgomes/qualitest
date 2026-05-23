@@ -1,3 +1,14 @@
+/*
+drop table resultados
+drop table execucoes
+drop table planocasos
+drop table planos
+drop table passos
+drop table casos
+drop table nos
+drop table projetos
+*/
+
 CREATE TABLE projetos (
     id UUID PRIMARY KEY,
     nome VARCHAR(255) NOT NULL DEFAULT '',
@@ -6,7 +17,7 @@ CREATE TABLE projetos (
     created_at TIMESTAMP DEFAULT NOW()
 )
 
-CREATE TABLE casos_nos (
+CREATE TABLE nos (
     id UUID PRIMARY KEY,
     projeto_id UUID NOT NULL REFERENCES projetos(id) ON DELETE CASCADE,
     parent_id UUID NULL,
@@ -17,23 +28,25 @@ CREATE TABLE casos_nos (
     created_at TIMESTAMP DEFAULT NOW()
 )
 
-CREATE TABLE casos_teste (
+CREATE TABLE casos (
     id UUID PRIMARY KEY,
-    casos_nos_id UUID NOT NULL,
+    nos_id UUID NOT NULL REFERENCES nos(id) ON DELETE CASCADE,
     pre_condicoes TEXT DEFAULT '',
-    resultado_esperado TEXT DEFAULT ''
+    resultado_esperado TEXT DEFAULT '',
+    created_at TIMESTAMP DEFAULT NOW()
 )
 
-CREATE TABLE passos_teste (
+CREATE TABLE passos (
     id UUID PRIMARY KEY,
-    casos_teste_id UUID NOT NULL REFERENCES casos_teste(id) ON DELETE CASCADE,
+    casos_id UUID NOT NULL REFERENCES casos(id) ON DELETE CASCADE,
 	
     ordem INT NOT NULL,
     acao TEXT NOT NULL DEFAULT '',
-    resultado_esperado TEXT DEFAULT ''
+    resultado_esperado TEXT DEFAULT '',
+    created_at TIMESTAMP DEFAULT NOW()
 )
 
-CREATE TABLE planos_teste (
+CREATE TABLE planos (
     id UUID PRIMARY KEY,
     projeto_id UUID NOT NULL REFERENCES projetos(id) ON DELETE CASCADE,	
     nome VARCHAR(255) NOT NULL DEFAULT '',
@@ -41,25 +54,28 @@ CREATE TABLE planos_teste (
     created_at TIMESTAMP DEFAULT NOW()
 )
 
-CREATE TABLE plano_casos (
+CREATE TABLE planocasos (
     id UUID PRIMARY KEY,
-	planos_teste_id UUID NOT NULL REFERENCES planos_teste(id) ON DELETE CASCADE,
-    casos_teste_id UUID NOT NULL REFERENCES casos_teste(id) ON DELETE CASCADE,	
-    CONSTRAINT unique_plano_caso UNIQUE (planos_teste_id, casos_teste_id)
+	planos_id UUID NOT NULL REFERENCES planos(id) ON DELETE CASCADE,
+    casos_id UUID NOT NULL REFERENCES casos(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT NOW(),
+    CONSTRAINT unique_plano_caso UNIQUE (planos_id, casos_id)
 )
 
 CREATE TABLE execucoes (
     id UUID PRIMARY KEY,
-    plano_id UUID NOT NULL REFERENCES planos_teste(id) ON DELETE CASCADE,
+    plano_id UUID NOT NULL REFERENCES planos(id) ON DELETE CASCADE,
     executado_por VARCHAR(100) DEFAULT '', 
     data_execucao TIMESTAMP DEFAULT NOW(),
-    status VARCHAR(20) DEFAULT ''
+    status VARCHAR(20) DEFAULT '',
+    created_at TIMESTAMP DEFAULT NOW()
 )
 
 CREATE TABLE resultados (
     id UUID PRIMARY KEY,
     execucao_id UUID NOT NULL REFERENCES execucoes(id) ON DELETE CASCADE,
-	casos_teste_id UUID NOT NULL,
+	casos_id UUID NOT NULL,
     status VARCHAR(20) DEFAULT '',
-    comentario TEXT DEFAULT ''
+    comentario TEXT DEFAULT '',
+    created_at TIMESTAMP DEFAULT NOW()
 )
