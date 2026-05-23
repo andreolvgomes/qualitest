@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+		<AWSProjectType>Lambda</AWSProjectType>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<PublishReadyToRun>true</PublishReadyToRun>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Amazon.Lambda.AspNetCoreServer.Hosting" Version="1.9.0" />
+		<PackageReference Include="FastEndpoints" Version="8.1.0" />
+		<PackageReference Include="FastEndpoints.Swagger" Version="8.1.0" />
+		<PackageReference Include="Scalar.AspNetCore" Version="2.14.14" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\src\Infra.IoC\Infra.IoC.csproj" />
+	</ItemGroup>
+</Project>

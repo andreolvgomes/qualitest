@@ -1,0 +1,35 @@
+PROJETOS
+   ↓
+CASOS_NOS (árvore)
+   ↓
+CASOS_TESTE (testes)
+   ↓
+PLANOS_TESTE (seleção)
+   ↓
+EXECUÇÃO
+   ↓
+RESULTADOS
+
+--------------------------------------------------
+1 - Cria Projeto
+	2 - Cria Casos de Testes
+		* Estrutura hierárquica para organização
+		3 - Cadastra os Passos de cada Teste
+			* Cria quantos passos quiser com detalhes de cada um
+	4 - Cria Plano de Testes
+		* Conjunto de testes selecionados
+		* Associa os Casos de Testes que devem ser executados no Plano
+	5 - Cria Execução de Testes
+		* Escolha o Plano e cria os registros no banco para execução
+		* Inclui automaticamente os Resultados com status "pendente"
+	6 - Executa os Testes das Execuções registradas
+		* Aplica o teste e registra o Resultado (Sucesso/Falha)
+
+--------------------------------------------------
+Estrutura hierárquica para organização
+SIC
+ └── Pagamento PIX
+      └── DAV
+           └── Exportação
+                ├── Exportar NF-e
+                └── Exportar NFC-e
