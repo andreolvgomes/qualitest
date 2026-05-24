@@ -12,7 +12,7 @@ namespace Infra.IoC
             DotNetEnv.Env.TraversePath().Load();
 
             //services.AddScoped<IProjetosRepository, ProjetosRepository>();
-            //services.AddScoped<ICasosNosRepository, CasosNosRepository>();
+            services.AddScoped<ICasosRepository, CasosRepository>();
             //services.AddScoped<ICasosTesteRepository, CasosTesteRepository>();
             //services.AddScoped<IPassosTesteRepository, PassosTesteRepository>();
 

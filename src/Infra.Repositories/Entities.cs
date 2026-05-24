@@ -10,13 +10,13 @@ namespace Infra.Repositories
         public bool Inativo { get; set; }
     }
 
-    [Table("nos")]
-    public class NosEntity : EntityBase
+    [Table("nodes")]
+    public class NodesEntity : EntityBase
     {
         public Guid Projeto_id { get; set; }
         public Guid? Parent_id { get; set; }
         public string Nome { get; set; }
-        public bool Caso_teste { get; set; }
+        public string Tipo { get; set; }
         public Int16 Ordem { get; set; }
         public bool Inativo { get; set; }
     }
@@ -24,7 +24,7 @@ namespace Infra.Repositories
     [Table("casos")]
     public class CasosEntity : EntityBase
     {
-        public Guid Nos_id { get; set; }
+        public Guid Node_id { get; set; }
         public string Pre_condicoes { get; set; }
         public string Resultado_esperado { get; set; }
     }

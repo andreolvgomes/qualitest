@@ -1,9 +1,9 @@
 ﻿using FastEndpoints;
 using Infra.Repositories;
 
-namespace QualiTest.Features.Casos.Passos
+namespace QualiTest.Features.Casos
 {
-    [HttpGet("passos")]
+    [HttpGet("casos/{caso_id:Guid}/passos")]
     public class GetAllPassosEndpoint : Endpoint<PassosEntity>
     {
         private readonly IRepositoryBase<PassosEntity> _repository;
@@ -15,7 +15,8 @@ namespace QualiTest.Features.Casos.Passos
 
         public async override Task HandleAsync(PassosEntity req, CancellationToken ct)
         {
-            await Send.OkAsync(await _repository.GetAll());
+            var caso_id = Route<Guid>("caso_id");
+            await Send.OkAsync(await _repository.GetAll(new { caso_id }));
         }
     }
 }

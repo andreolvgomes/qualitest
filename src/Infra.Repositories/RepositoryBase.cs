@@ -8,7 +8,7 @@ namespace Infra.Repositories
     {
         [ExplicitKey]
         public Guid Id { get; set; } = Guid.NewGuid();
-        public DateTime? Created_At { get; set; } = DateTime.UtcNow;
+        public DateTime? Created_at { get; set; } = DateTime.UtcNow;
     }
 
     public interface IRepositoryBase<TEntity> where TEntity : EntityBase

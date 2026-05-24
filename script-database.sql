@@ -5,7 +5,7 @@ drop table planocasos
 drop table planos
 drop table passos
 drop table casos
-drop table nos
+drop table nodes
 drop table projetos
 */
 
@@ -17,12 +17,12 @@ CREATE TABLE projetos (
     created_at TIMESTAMP DEFAULT NOW()
 )
 
-CREATE TABLE nos (
+CREATE TABLE nodes (
     id UUID PRIMARY KEY,
     projeto_id UUID NOT NULL REFERENCES projetos(id) ON DELETE CASCADE,
     parent_id UUID NULL,
     nome VARCHAR(255) NOT NULL DEFAULT '',
-    caso_teste BOOLEAN NOT NULL DEFAULT FALSE,
+    tipo VARCHAR(50) NOT NULL DEFAULT '',
     ordem INT DEFAULT 0,
 	inativo BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT NOW()
@@ -30,7 +30,7 @@ CREATE TABLE nos (
 
 CREATE TABLE casos (
     id UUID PRIMARY KEY,
-    no_id UUID NOT NULL REFERENCES nos(id) ON DELETE CASCADE,
+    node_id UUID NOT NULL REFERENCES nodes(id) ON DELETE CASCADE,
     pre_condicoes TEXT DEFAULT '',
     resultado_esperado TEXT DEFAULT '',
     created_at TIMESTAMP DEFAULT NOW()
