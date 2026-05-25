@@ -3,6 +3,7 @@ drop table resultados
 drop table execucoes
 drop table planocasos
 drop table planos
+drop table suites
 drop table passos
 drop table casos
 drop table nodes
@@ -25,6 +26,13 @@ CREATE TABLE nodes (
     tipo VARCHAR(50) NOT NULL DEFAULT '',
     ordem INT DEFAULT 0,
 	inativo BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT NOW()
+)
+
+CREATE TABLE suites (
+    id UUID PRIMARY KEY,
+    node_id UUID NOT NULL REFERENCES nodes(id) ON DELETE CASCADE,
+    pre_condicoes TEXT DEFAULT '',
     created_at TIMESTAMP DEFAULT NOW()
 )
 

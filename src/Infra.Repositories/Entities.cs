@@ -21,6 +21,13 @@ namespace Infra.Repositories
         public bool Inativo { get; set; }
     }
 
+    [Table("suites")]
+    public class SuitesEntity : EntityBase
+    {
+        public Guid Node_id { get; set; }
+        public string Pre_condicoes { get; set; }
+    }
+
     [Table("casos")]
     public class CasosEntity : EntityBase
     {
