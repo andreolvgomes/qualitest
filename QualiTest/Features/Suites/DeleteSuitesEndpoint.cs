@@ -7,15 +7,20 @@ namespace QualiTest.Features.Suites
     public class DeleteSuitesEndpoint : EndpointWithoutRequest
     {
         private readonly IRepositoryBase<SuitesEntity> _repository;
+        private readonly INodesRepository _nodesRepository;
 
-        public DeleteSuitesEndpoint(IRepositoryBase<SuitesEntity> repository)
+        public DeleteSuitesEndpoint(IRepositoryBase<SuitesEntity> repository,
+            INodesRepository nodesRepository)
         {
             _repository = repository;
+            _nodesRepository = nodesRepository;
         }
 
         public async override Task HandleAsync(CancellationToken ct)
         {
-            await _repository.Delete(Route<Guid>("id"));
+            var entity = await _repository.Get(Route<Guid>("id"));
+            await _nodesRepository.Delete(entity.Node_id);
+
             await Send.OkAsync();
         }
     }

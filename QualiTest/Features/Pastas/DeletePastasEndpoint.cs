@@ -3,12 +3,12 @@ using Infra.Repositories;
 
 namespace QualiTest.Features.Nos
 {
-    [HttpDelete("nos/{id:Guid}")]
-    public class DeleteNosEndpoint : Endpoint<NodesEntity>
+    [HttpDelete("pastas/{id:Guid}")]
+    public class DeletePastasEndpoint : Endpoint<NodesEntity>
     {
         private readonly IRepositoryBase<NodesEntity> _repository;
 
-        public DeleteNosEndpoint(IRepositoryBase<NodesEntity> repository)
+        public DeletePastasEndpoint(IRepositoryBase<NodesEntity> repository)
         {
             _repository = repository;
         }

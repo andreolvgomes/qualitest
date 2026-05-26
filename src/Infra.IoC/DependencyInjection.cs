@@ -13,6 +13,7 @@ namespace Infra.IoC
 
             //services.AddScoped<IProjetosRepository, ProjetosRepository>();
             services.AddScoped<ICasosRepository, CasosRepository>();
+            services.AddScoped<INodesRepository, NodesRepository>();
             //services.AddScoped<ICasosTesteRepository, CasosTesteRepository>();
             //services.AddScoped<IPassosTesteRepository, PassosTesteRepository>();
 

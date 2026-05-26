@@ -6,16 +6,21 @@ namespace QualiTest.Features.Casos
     [HttpDelete("casos/{id:Guid}")]
     public class DeleteCasosEndpoint : Endpoint<CasosEntity>
     {
-        private readonly IRepositoryBase<CasosEntity> _repository;
+        private readonly ICasosRepository _casosRepository;
+        private readonly INodesRepository _nodesRepository;
 
-        public DeleteCasosEndpoint(IRepositoryBase<CasosEntity> repository)
+        public DeleteCasosEndpoint(ICasosRepository casosRepository,
+            INodesRepository nodesRepository)
         {
-            _repository = repository;
+            _casosRepository = casosRepository;
+            _nodesRepository = nodesRepository;
         }
 
         public async override Task HandleAsync(CasosEntity req, CancellationToken ct)
         {
-            await _repository.Delete(Route<Guid>("id"));
+            var entity = await _casosRepository.Get(Route<Guid>("id"));
+            await _nodesRepository.Delete(entity.Node_id);
+
             await Send.OkAsync();
         }
     }
