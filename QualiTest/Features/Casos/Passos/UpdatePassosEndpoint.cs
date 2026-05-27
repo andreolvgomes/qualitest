@@ -3,7 +3,7 @@ using Infra.Repositories;
 
 namespace QualiTest.Features.Casos.Passos
 {
-    [HttpPut("passos/{id:Guid}")]
+    [HttpPut("casos/{caso_id:Guid}/passos/{id:Guid}")]
     public class UpdatePassosEndpoint : Endpoint<PassosEntity>
     {
         private readonly IRepositoryBase<PassosEntity> _repository;

@@ -3,7 +3,7 @@ using Infra.Repositories;
 
 namespace QualiTest.Features.Casos.Passos
 {
-    [HttpDelete("passos/{id:Guid}")]
+    [HttpDelete("casos/{caso_id:Guid}/passos/{id:Guid}")]
     public class DeletePassosEndpoint : Endpoint<PassosEntity>
     {
         private readonly IRepositoryBase<PassosEntity> _repository;
